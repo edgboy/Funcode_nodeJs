@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Introduction to C",
+        "description": "<h2>Welcome to C Programming!</h2><p>C is a powerful general-purpose programming language. It is fast, portable, and available on all platforms.</p><p>Let's start with the classic 'Hello, World!' program.</p><h3>Task:</h3><p>Run the code to see the output.</p>",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}"
+    },
+    {
+        "id": 2,
+        "title": "Variables and Types",
+        "description": "<h2>Variables</h2><p>In C, you need to declare variables before using them. Common types include <code>int</code>, <code>float</code>, <code>char</code>.</p><h3>Task:</h3><p>Create an integer variable named <code>age</code>, assign it the value 25, and print it.</p>",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Declare variable here\n    int age = 25;\n    \n    printf(\"I am %d years old.\\n\", age);\n    return 0;\n}"
+    },
+    {
+        "id": 3,
+        "title": "Loops",
+        "description": "<h2>Loops</h2><p>Loops allow you to execute a block of code multiple times. A <code>for</code> loop is commonly used when you know how many times to iterate.</p><h3>Task:</h3><p>Write a loop that prints numbers from 1 to 5.</p>",
+        "starterCode": "#include <stdio.h>\n\nint main() {\n    int i;\n    for (i = 1; i <= 5; i++) {\n        printf(\"Number: %d\\n\", i);\n    }\n    return 0;\n}"
+    },
+    {
+        "id": 4,
+        "title": "Functions",
+        "description": "<h2>Functions</h2><p>Functions help organize code into reusable blocks.</p><h3>Task:</h3><p>Complete the <code>greet</code> function to print a welcome message.</p>",
+        "starterCode": "#include <stdio.h>\n\nvoid greet() {\n    printf(\"Welcome to C Learning Platform!\\n\");\n}\n\nint main() {\n    greet();\n    return 0;\n}"
+    }
+]

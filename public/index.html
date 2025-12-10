@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Learning Platform</title>
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>C Learning Platform</h1>
+        <button id="runBtn">Run Code ▶</button>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h3>Lessons</h3>
+            <ul id="lessonList">
+                <!-- Loaded via JS -->
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Lesson Description Pane -->
+            <div class="lesson-pane">
+                <div class="pane-header">Instructions</div>
+                <div id="lessonContent" class="pane-content">
+                    Select a lesson to begin.
+                </div>
+            </div>
+
+            <!-- Editor Pane -->
+            <div class="editor-pane">
+                <div class="pane-header">Code Editor (main.c)</div>
+                <textarea id="codeEditor"></textarea>
+            </div>
+            
+            <!-- Output Pane -->
+            <div class="output-pane">
+                <div class="pane-header">Terminal Output</div>
+                <pre id="output">Waiting for execution...</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- CodeMirror JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
