@@ -1,26 +1,112 @@
-[
-    {
-        "id": 1,
-        "title": "Introduction to C",
-        "description": "<h2>Welcome to C Programming!</h2><p>C is a powerful general-purpose programming language. It is fast, portable, and available on all platforms.</p><p>Let's start with the classic 'Hello, World!' program.</p><h3>Task:</h3><p>Run the code to see the output.</p>",
-        "starterCode": "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}"
-    },
-    {
-        "id": 2,
-        "title": "Variables and Types",
-        "description": "<h2>Variables</h2><p>In C, you need to declare variables before using them. Common types include <code>int</code>, <code>float</code>, <code>char</code>.</p><h3>Task:</h3><p>Create an integer variable named <code>age</code>, assign it the value 25, and print it.</p>",
-        "starterCode": "#include <stdio.h>\n\nint main() {\n    // Declare variable here\n    int age = 25;\n    \n    printf(\"I am %d years old.\\n\", age);\n    return 0;\n}"
-    },
-    {
-        "id": 3,
-        "title": "Loops",
-        "description": "<h2>Loops</h2><p>Loops allow you to execute a block of code multiple times. A <code>for</code> loop is commonly used when you know how many times to iterate.</p><h3>Task:</h3><p>Write a loop that prints numbers from 1 to 5.</p>",
-        "starterCode": "#include <stdio.h>\n\nint main() {\n    int i;\n    for (i = 1; i <= 5; i++) {\n        printf(\"Number: %d\\n\", i);\n    }\n    return 0;\n}"
-    },
-    {
-        "id": 4,
-        "title": "Functions",
-        "description": "<h2>Functions</h2><p>Functions help organize code into reusable blocks.</p><h3>Task:</h3><p>Complete the <code>greet</code> function to print a welcome message.</p>",
-        "starterCode": "#include <stdio.h>\n\nvoid greet() {\n    printf(\"Welcome to C Learning Platform!\\n\");\n}\n\nint main() {\n    greet();\n    return 0;\n}"
-    }
-]
+{
+    "modules": [
+        {
+            "id": "m1",
+            "title": "Module 1: C Fundamentals (Fondamentaux du C)",
+            "lessons": [
+                {
+                    "id": 1,
+                    "title": "Introduction & Hello World",
+                    "description": "<h2>Bienvenue dans la Programmation C</h2><p>C est souvent appelé la **'langue mère'** de nombreux langages de programmation modernes (comme C++, C#, Java, etc.). Il est réputé pour son **efficacité**, sa **vitesse d'exécution** et son **contrôle direct** sur les ressources système.</p><p>Chaque programme C commence son exécution à partir de la fonction <code>main</code>. L'inclusion de <code>&lt;stdio.h&gt;</code> nous donne accès aux fonctions d'entrée/sortie standard, comme <code>printf</code> pour afficher du texte.</p><h3>Notions Clés:</h3><ul><li><code>#include &lt;stdio.h&gt;</code>: **Directive du préprocesseur** pour inclure la librairie d'Input/Output Standard.</li><li><code>int main()</code>: La **fonction principale** où le programme commence. Elle retourne un entier (<code>int</code>).</li><li><code>printf(...)</code>: Fonction pour afficher du texte sur la console.</li><li><code>\\n</code>: Le caractère de **nouvelle ligne** (Newline).</li><li><code>return 0;</code>: Indique au système d'exploitation que le programme s'est terminé **avec succès**.</li></ul><h3>Task:</h3><p>Exécutez le code pour compiler et exécuter votre premier programme et observez la sortie.</p>",
+                    "starterCode": "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}"
+                },
+                {
+                    "id": 2,
+                    "title": "Variables & Types de Données",
+                    "description": "<h2>Variables</h2><p>C est un langage **statiquement typé**. Cela signifie que vous devez déclarer le **type** d'une variable avant de pouvoir l'utiliser. Ce type définit la quantité de mémoire allouée et la manière dont les données sont interprétées.</p><h3>Types Primitifs Courants:</h3><ul><li><code>int</code>: Entiers (nombres entiers, ex: -5, 0, 42). Typiquement 4 octets.</li><li><code>float</code>: Nombres à virgule flottante de simple précision (ex: 3.14, -0.001). Typiquement 4 octets.</li><li><code>double</code>: Nombres à virgule flottante de double précision (plus précis que <code>float</code>). Typiquement 8 octets.</li><li><code>char</code>: Un seul caractère (ex: 'A', '7', '$'). Typiquement 1 octet.</li></ul><h3>Spécificateurs de Format dans <code>printf</code>:</h3><p>Pour afficher la valeur d'une variable, vous utilisez un spécificateur de format dans <code>printf</code>:</p><ul><li><code>%d</code> ou <code>%i</code>: pour <code>int</code></li><li><code>%f</code>: pour <code>float</code> ou <code>double</code> (Utilisez <code>%.2f</code> pour afficher 2 chiffres après la virgule.)</li><li><code>%c</code>: pour <code>char</code></li><li><code>%s</code>: pour les chaînes de caractères (strings)</li></ul><h3>Task:</h3><p>Déclarez un <code>int</code> nommé <code>score</code> avec la valeur 100 et un <code>float</code> nommé <code>pi</code> avec la valeur 3.14. Affichez-les en utilisant les spécificateurs de format appropriés.</p>",
+                    "starterCode": "#include <stdio.h>\n\nint main() {\n    int score = 100;\n    float pi = 3.14f; // 'f' pour indiquer que c'est un float\n    \n    printf(\"Score: %d, Pi: %.2f\\n\", score, pi);\n    return 0;\n}"
+                },
+                {
+                    "id": 2.5,
+                    "title": "Opérateurs et Expressions",
+                    "description": "<h2>Opérateurs</h2><p>Les opérateurs sont des symboles qui disent au compilateur d'effectuer des opérations mathématiques ou logiques.</p><h3>Opérateurs Arithmétiques (Math):</h3><table><thead><tr><th>Opérateur</th><th>Description</th><th>Exemple</th></tr></thead><tbody><tr><td><code>+</code></td><td>Addition</td><td><code>a + b</code></td></tr><tr><td><code>-</code></td><td>Soustraction</td><td><code>a - b</code></td></tr><tr><td><code>*</code></td><td>Multiplication</td><td><code>a * b</code></td></tr><tr><td><code>/</code></td><td>Division</td><td><code>a / b</code></td></tr><tr><td><code>%</code></td><td>Modulo (reste de la division)</td><td><code>a % b</code></td></tr></tbody></table><h3>Opérateurs Relationnels (Comparaison):</h3><table><thead><tr><th>Opérateur</th><th>Description</th></tr></thead><tbody><tr><td><code>==</code></td><td>Égal à</td></tr><tr><td><code>!=</code></td><td>Différent de</td></tr><tr><td><code>></code>, <code><</code></td><td>Supérieur à, Inférieur à</td></tr><tr><td><code>>=</code>, <code><=</code></td><td>Supérieur ou égal, Inférieur ou égal</td></tr></tbody></table><h3>Opérateurs Logiques:</h3><p>Utilisés pour combiner des conditions :</p><ul><li><code>&&</code>: ET logique (Vrai si les deux sont vrais)</li><li><code>||</code>: OU logique (Vrai si au moins un est vrai)</li><li><code>!</code>: NON logique (Inverse le résultat)</li></ul><h3>Task:</h3><p>Écrivez un programme qui vérifie si un nombre entier `num` (initialisé à 25) est divisible par 5 ET est supérieur à 10. Affichez 'Vrai' ou 'Faux'.</p>",
+                    "starterCode": "#include <stdio.h>\n#include <stdbool.h>\n\nint main() {\n    int num = 25;\n    // Le type bool n'est pas standard en C89. Utilisez int, où 1=Vrai, 0=Faux.\n    int condition_remplie = (num % 5 == 0) && (num > 10);\n    \n    printf(\"Condition remplie (1=Vrai, 0=Faux): %d\\n\", condition_remplie);\n    return 0;\n}"
+                },
+                {
+                    "id": 3,
+                    "title": "Flux de Contrôle: Boucles et Conditions",
+                    "description": "<h2>Les Boucles (Loops)</h2><p>Les boucles répètent un bloc de code. Elles sont essentielles pour automatiser les tâches répétitives.</p><ul><li>**`for` loop**: Idéale lorsque vous connaissez le **nombre d'itérations** à l'avance (initialisation, condition, incrémentation).</li><li>**`while` loop**: Continue tant qu'une **condition est vraie**.</li><li>**`do-while` loop**: Exécute le bloc **au moins une fois**, puis vérifie la condition (utile pour les menus).</li></ul><h3>Conditions (If/Else)</h3><p>La structure **`if/else`** permet d'exécuter différents blocs de code en fonction de conditions logiques (vraies ou fausses).</p><h4>Exemple de `if/else`:</h4><pre><code>int age = 18;\nif (age &gt; 18) {\n    printf(\"Adulte\\n\");\n} else if (age == 18) {\n    printf(\"Tout juste adulte\\n\");\n} else {\n    printf(\"Mineur\\n\");\n}</code></pre><h3>Task:</h3><p>Écrivez une boucle `for` qui imprime les 5 premiers nombres pairs (2, 4, 6, 8, 10). *Indice: vous pouvez commencer votre itérateur à 1 et le multiplier par 2 dans le corps de la boucle.*</p>",
+                    "starterCode": "#include <stdio.h>\n\nint main() {\n    // Écrivez votre boucle ici\n    \n    return 0;\n}"
+                },
+                {
+                    "id": 3.5,
+                    "title": "Instruction Switch",
+                    "description": "<h2>L'instruction `switch`</h2><p>Le `switch` est une alternative propre aux longues chaînes de `if-else if-else` lorsque vous testez la valeur **d'une seule expression entière** (int, char, enum).</p><h3>Structure:</h3><pre><code>switch (expression) {\n    case constante1:\n        // Code si expression == constante1\n        break; // TRES important!\n    case constante2:\n        // Code si expression == constante2\n        break;\n    default:\n        // Code si aucune correspondance trouvée\n}</code></pre><ul><li>Le mot-clé **`break`** est crucial. S'il est omis, l'exécution 'tombera' dans le `case` suivant (fallthrough).</li><li>**`default`** est optionnel et gère tous les cas non spécifiés.</li></ul><h3>Task:</h3><p>Simulez un menu où l'utilisateur entre 1, 2 ou autre. Utilisez `switch` pour afficher 'Option 1 sélectionnée', 'Option 2 sélectionnée', ou 'Option invalide'.</p>",
+                    "starterCode": "#include <stdio.h>\n\nint main() {\n    int choix = 2; // Simule l'entrée utilisateur\n    \n    // Implémentez le switch ici\n    \n    return 0;\n}"
+                },
+                {
+                    "id": 4,
+                    "title": "Fonctions (Functions)",
+                    "description": "<h2>Fonctions</h2><p>Les fonctions sont des blocs de code réutilisables qui effectuent une tâche spécifique. Elles permettent de diviser un programme complexe en morceaux plus petits, plus gérables et plus faciles à déboguer (**Modularité**).</p><h3>Structure d'une Fonction:</h3><pre><code>**TypeRetour** **NomFonction** (Type Parametre1, Type Parametre2, ...) {\n    // Corps de la fonction\n    return Valeur; // Seulement si TypeRetour n'est pas 'void'\n}</code></pre><ul><li>**Déclaration (Prototype)**: Informe le compilateur de l'existence de la fonction avant sa définition. Elle est généralement placée en haut du fichier ou dans un fichier d'en-tête (<code>.h</code>).</li><li>**Définition**: Contient le code réel de la fonction.</li><li>**Passage par Valeur**: Par défaut, les arguments sont copiés dans la fonction. La fonction ne peut pas modifier l'original (voir Module 2 pour le passage par référence via les pointeurs).</li></ul><h3>Task:</h3><p>Implémentez la fonction <code>square</code> qui prend un entier <code>n</code> en entrée et retourne son carré (<code>n * n</code>).</p>",
+                    "starterCode": "#include <stdio.h>\n\n// Définissez la fonction ici\nint square(int n) {\n    return 0; // Corrigez ceci\n}\n\nint main() {\n    printf(\"Le carré de 5 est: %d\\n\", square(5));\n    return 0;\n}"
+                }
+            ]
+        },
+        {
+            "id": "m2",
+            "title": "Module 2: Mémoire et Pointeurs (Memory & Pointers)",
+            "lessons": [
+                {
+                    "id": 5,
+                    "title": "Tableaux (Arrays)",
+                    "description": "<h2>Tableaux</h2><p>Un tableau est une **collection ordonnée** de variables du **même type**, stockées dans des emplacements mémoire contigus. L'accès aux éléments se fait par un **indice**, qui commence toujours à **0**.</p><h3>Déclaration et Initialisation:</h3><pre><code>int notes[5]; // Déclare un tableau de 5 entiers (indices 0 à 4)\nint chiffres[] = {1, 2, 3}; // Initialisation avec taille implicite de 3</code></pre><h3>Relation avec les Pointeurs:</h3><p>En C, le nom d'un tableau (sans indice) est souvent traité comme un **pointeur constant** vers son premier élément. Ainsi, `numbers` est équivalent à `&numbers[0]`.</p><h3>Task:</h3><p>Initialisez un tableau de 3 entiers nommé <code>numbers</code> avec les valeurs {10, 20, 30} et affichez le deuxième élément (qui a la valeur 20). Puis, tentez d'afficher le premier élément en utilisant l'arithmétique des pointeurs (`*(numbers + 0)`).</p>",
+                    "starterCode": "#include <stdio.h>\n\nint main() {\n    int numbers[3];\n    // Initialisez, puis affichez numbers[1] et *(numbers + 0)\n    \n    return 0;\n}"
+                },
+                {
+                    "id": 6,
+                    "title": "Introduction aux Pointeurs",
+                    "description": "<h2>Pointeurs</h2><p>Un pointeur est une variable spéciale qui stocke l'**adresse mémoire** d'une autre variable. C'est le concept le plus puissant et le plus complexe du C. </p><h3>Opérateurs Clés:</h3><ul><li>**Opérateur d'Adresse (`&`)**: Utilisé pour obtenir l'adresse mémoire d'une variable (l'opérateur **'adresse de'**).</li><li>**Opérateur de Déréférencement (`*`)**: Utilisé pour accéder à la valeur stockée à l'adresse pointée (l'opérateur **'valeur à l'adresse'**).</li></ul><h3>Passage par Référence:</h3><p>L'utilisation de pointeurs dans les fonctions permet le **Passage par Référence**, où la fonction peut modifier la valeur de la variable originale, et non seulement une copie.</p><h3>Task:</h3><p>Créez une variable `int x = 50`. Créez un pointeur `ptr` pointant vers `x` (`int *ptr = &x;`). Modifiez la valeur de `x` à 100 **en utilisant le pointeur** (`*ptr = ...`). Affichez la nouvelle valeur de `x`.</p>",
+                    "starterCode": "#include <stdio.h>\n\nint main() {\n    int x = 50;\n    int *ptr = &x;\n    \n    // Modifiez x en utilisant ptr\n    \n    printf(\"Value of x: %d\\n\", x);\n    return 0;\n}"
+                },
+                {
+                    "id": 6.5,
+                    "title": "Arithmétique des Pointeurs",
+                    "description": "<h2>Arithmétique des Pointeurs</h2><p>L'addition ou la soustraction d'un entier à un pointeur ne le déplace **PAS** d'un octet, mais du **nombre d'octets de la taille du type** qu'il pointe.</p><h3>Exemple:</h3><p>Si `int *ptr` pointe vers l'adresse `1000` (et que `sizeof(int)` est 4 octets), alors `ptr + 1` pointera vers l'adresse `1004`.</p><h4>Déréférencement et Accès Séquentiel:</h4><pre><code>int arr[] = {10, 20};\nint *p = arr; // p pointe vers 10\nprintf(\"%d\", *(p + 1)); // Affiche 20 (va à l'élément suivant)</code></pre><h3>Pointeurs Void (`void *`):</h3><p>Un pointeur `void *` peut stocker l'adresse de **tout type** de donnée, mais ne supporte pas l'arithmétique des pointeurs sans être *casté* (car le compilateur ne connaît pas la taille de la donnée pointée).</p><h3>Task:</h3><p>En utilisant le tableau `numbers` de la leçon 5, créez un pointeur qui pointe vers le début et utilisez l'arithmétique des pointeurs pour afficher la valeur du troisième élément (valeur 30).</p>",
+                    "starterCode": "#include <stdio.h>\n\nint main() {\n    int numbers[] = {10, 20, 30, 40};\n    int *p = numbers;\n    \n    // Affichez le troisième élément (30) en utilisant *(p + 2)\n    \n    return 0;\n}"
+                },
+                {
+                    "id": 7,
+                    "title": "Chaînes de Caractères (Strings) comme Tableaux",
+                    "description": "<h2>Chaînes de Caractères</h2><p>En C, une chaîne de caractères n'est rien d'autre qu'un **tableau de caractères** (`char`) qui doit être terminé par un caractère spécial: le **caractère nul** (`\\0`). Ce terminateur signale la fin de la chaîne pour les fonctions de manipulation de chaînes (comme `printf` avec `%s`).</p><h3>Initialisation de Chaînes:</h3><pre><code>char str1[] = \"Hello\"; // Le compilateur ajoute automatiquement le '\\0'\nchar str2[6] = {'H', 'e', 'l', 'l', 'o', '\\0'}; // Explicite</code></pre><h3>Fonctions Utiles (`&lt;string.h&gt;`):</h3><p>Pour manipuler les chaînes (copie, concaténation, longueur), il faut inclure la librairie `&lt;string.h&gt;`:</p><ul><li>`size_t strlen(const char *s)`: Longueur de la chaîne (sans compter `\\0`).</li><li>`char *strcpy(char *dest, const char *src)`: Copie la chaîne `src` dans `dest`.</li><li>`int strcmp(const char *s1, const char *s2)`: Compare deux chaînes (retourne 0 si identiques).</li></ul><h3>Task:</h3><p>Déclarez une chaîne de caractères `name` avec votre nom (`char name[] = \"Votre Nom\";`) et affichez-la en utilisant le spécificateur `%s`. Utilisez ensuite `strlen` pour afficher sa longueur.</p>",
+                    "starterCode": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char name[] = \"C Programmer\";\n    \n    printf(\"Hello, %s\\n\", name);\n    // Utilisez strlen ici\n    \n    return 0;\n}"
+                }
+            ]
+        },
+        {
+            "id": "m3",
+            "title": "Module 3: Structures et Avancé (Structures & Advanced)",
+            "lessons": [
+                {
+                    "id": 8,
+                    "title": "Structures (struct)",
+                    "description": "<h2>Structures (`struct`)</h2><p>Les structures vous permettent de **regrouper différentes variables de types différents** sous un seul nom. C'est l'équivalent des objets ou enregistrements dans d'autres langages, sans les fonctions internes (méthodes).</p><h3>Définition et Utilisation:</h3><pre><code>struct Personne {\n    char nom[50];\n    int age;\n};\n\n// Dans main:\nstruct Personne p1;\np1.age = 30; // Accès avec l'opérateur point (`.`)</code></pre><h3>Pointeurs de Structures:</h3><p>Si vous avez un pointeur vers une structure (`struct Personne *ptr_p1;`), vous utilisez l'opérateur **flèche (`->`)** pour accéder aux membres. C'est un raccourci pour `(*ptr_p1).age`.</p><h3>Task:</h3><p>Définissez une structure `Point` avec des coordonnées `int x` et `int y`. Créez une instance de ce point dans `main`, assignez-lui les coordonnées (ex: x=5, y=10) et affichez ses coordonnées.</p>",
+                    "starterCode": "#include <stdio.h>\n\nstruct Point {\n    int x;\n    int y;\n};\n\nint main() {\n    // Créez une instance Point et l'afficher\n    \n    return 0;\n}"
+                },
+                {
+                    "id": 8.5,
+                    "title": "Typedef et Enum",
+                    "description": "<h2>`typedef` pour la clarté</h2><p>`typedef` permet de donner un **alias** (un nouveau nom) à un type de donnée existant. C'est particulièrement utile pour les structures, les pointeurs complexes ou pour simplifier le code.</p><h4>Exemple avec Struct:</h4><pre><code>// Avant:\nstruct Personne p1;\n// Après typedef:\ntypedef struct { char nom[50]; } Personne;\nPersonne p1; // Plus simple à utiliser</code></pre><h2>Énumérations (`enum`)</h2><p>Une énumération est un type de donnée défini par l'utilisateur qui consiste en un ensemble de **constantes entières nommées**. Cela rend le code beaucoup plus lisible que d'utiliser des 'nombres magiques'.</p><h4>Exemple Enum:</h4><pre><code>enum Jours { LUNDI, MARDI, MERCREDI };\n// Par défaut, LUNDI est 0, MARDI est 1, etc.</code></pre><h3>Task:</h3><p>Définissez un `enum` pour les couleurs (ROUGE, VERT, BLEU). Créez une variable de type `enum` et affichez la valeur entière de ROUGE.</p>",
+                    "starterCode": "#include <stdio.h>\n\n// Définissez l'enum ici\n\nint main() {\n    // Créez une variable de couleur et affichez la valeur de ROUGE\n    \n    return 0;\n}"
+                },
+                {
+                    "id": 9,
+                    "title": "Gestion Dynamique de la Mémoire (malloc/free)",
+                    "description": "<h2>Mémoire Dynamique (Heap)</h2><p>La gestion dynamique de la mémoire permet d'allouer de l'espace sur le **Tas (Heap)** pendant l'exécution du programme.  Contrairement à la **Pile (Stack)**, la mémoire allouée sur le Tas doit être **manuellement** libérée.</p><h3>Fonctions Clés (`&lt;stdlib.h&gt;`):</h3><ul><li>**`malloc(size)`**: Alloue `size` octets. Retourne un `void*`.</li><li>**`calloc(n, size)`**: Alloue `n` blocs de `size` octets et les **initialise à zéro**.</li><li>**`realloc(ptr, new_size)`**: Change la taille du bloc de mémoire pointé par `ptr`.</li><li>**`free(ptr)`**: Libère le bloc de mémoire. **Obligatoire** pour éviter les fuites de mémoire (memory leaks).</li></ul><h4>Vérification Essentielle:</h4><p>Toujours vérifier si `malloc` a réussi en s'assurant que le pointeur n'est pas `NULL`.</p><h3>Task:</h3><p>Allouez de la mémoire pour un seul entier en utilisant <code>malloc</code>. Vérifiez si l'allocation a réussi. Attribuez-lui une valeur (ex: 42), affichez-la, puis libérez la mémoire allouée avec <code>free</code>.</p>",
+                    "starterCode": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int *ptr;\n    \n    // Allouez de la mémoire et castez\n    \n    if (ptr == NULL) {\n        printf(\"Erreur d'allocation mémoire\\n\");\n        return 1;\n    }\n    \n    // Utilisez et affichez la valeur\n    \n    // Libérez la mémoire\n    \n    return 0;\n}"
+                },
+                {
+                    "id": 9.5,
+                    "title": "Le Préprocesseur C",
+                    "description": "<h2>Directives du Préprocesseur</h2><p>Le préprocesseur exécute des commandes **avant** la compilation. Ces commandes commencent par `#`.</p><h3>`#include` : Inclusion de Fichiers</h3><p>La directive la plus courante. Elle insère le contenu d'un autre fichier source ou d'en-tête.</p><ul><li>`#include <fichier.h>`: Recherche dans les répertoires système (pour les librairies standard).</li><li>`#include \"fichier.h\"`: Recherche dans le répertoire actuel (pour vos propres fichiers).</li></ul><h3>`#define` : Constantes et Macros</h3><p>Définit des constantes symboliques ou des macros (fonctions simples sans surcharge d'appel de fonction).</p><h4>Exemple de Constante:</h4><pre><code>#define PI 3.14159\n// Le compilateur remplace PI par 3.14159 partout avant la compilation.</code></pre><h3>Compilation Conditionnelle:</h3><p>Permet d'inclure ou d'exclure du code en fonction de conditions de préprocesseur : `#ifdef`, `#ifndef`, `#endif`.</p><h3>Task:</h3><p>Définissez une constante `MAX_SIZE` à 10 en utilisant `#define`. Imprimez cette valeur dans `main`.</p>",
+                    "starterCode": "#include <stdio.h>\n\n// Définissez la constante MAX_SIZE ici\n\nint main() {\n    printf(\"Taille Max: %d\\n\", MAX_SIZE);\n    return 0;\n}"
+                },
+                {
+                    "id": 10,
+                    "title": "Fichiers (File I/O)",
+                    "description": "<h2>Entrée/Sortie de Fichiers (File I/O)</h2><p>Le C utilise le type **`FILE`** (un pointeur vers une structure) pour gérer les flux de données (streams) vers et depuis le système de fichiers.</p><h3>Étapes Clés:</h3><ol><li>**Ouvrir** le fichier en spécifiant le nom et le mode (`fopen`).</li><li>**Lire/Écrire** les données (`fprintf`, `fscanf`, `fputc`, `fgets`, etc.).</li><li>**Fermer** le fichier (`fclose`). **Essentiel** pour s'assurer que les données sont écrites et les ressources libérées.</li></ol><h3>Modes d'Ouverture (`fopen(filename, mode)`):</h3><ul><li>`\"r\"`: Lecture seule.</li><li>`\"w\"`: Écriture (crée le fichier ou écrase l'existant).</li><li>`\"a\"`: Ajout (écrit à la fin du fichier).</li><li>`\"rb\"`, `\"wb\"`: Modes binaires (pour les données non textuelles).</li></ul><h3>Task:</h3><p>Écrivez dans un fichier nommé `output.txt` la phrase \"C'est ma première écriture de fichier en C!\". N'oubliez pas de vérifier l'ouverture et de fermer le fichier.</p>",
+                    "starterCode": "#include <stdio.h>\n\nint main() {\n    FILE *fp;\n    \n    // Ouvrir le fichier en mode écriture\n    fp = fopen(\"output.txt\", \"w\");\n    \n    if (fp == NULL) {\n        printf(\"Erreur lors de l'ouverture du fichier!\\n\");\n        return 1;\n    }\n    \n    // Écrire dans le fichier (utilisez fprintf)\n    fprintf(fp, \"C'est ma première écriture de fichier en C!\\n\");\n    \n    // Fermer le fichier\n    fclose(fp);\n    \n    return 0;\n}"
+                }
+            ]
+        }
+    ]
+}

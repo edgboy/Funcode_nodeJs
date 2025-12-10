@@ -14,40 +14,102 @@ document.addEventListener('DOMContentLoaded', async () => {
         indentUnit: 4
     });
 
-    let lessons = [];
+    let modules = [];
+    let allLessons = []; // Flattened list for easy navigation
+    let currentLessonIndex = 0;
 
     // Fetch and Load Lessons
     try {
         const res = await fetch('lessons.json');
-        lessons = await res.json();
-        renderLessonList();
-        if (lessons.length > 0) loadLesson(0);
+        const data = await res.json();
+        modules = data.modules;
+        
+        // Flatten lessons for navigation
+        modules.forEach(module => {
+            module.lessons.forEach(lesson => {
+                allLessons.push(lesson);
+            });
+        });
+
+        renderLessonSidebar();
+        
+        if (allLessons.length > 0) {
+            loadLesson(0);
+        }
     } catch (err) {
         console.error('Failed to load lessons', err);
         lessonContent.innerHTML = '<p class="error">Failed to load course content.</p>';
     }
 
-    function renderLessonList() {
+    function renderLessonSidebar() {
         lessonList.innerHTML = '';
-        lessons.forEach((lesson, index) => {
-            const li = document.createElement('li');
-            li.textContent = `${index + 1}. ${lesson.title}`;
-            li.addEventListener('click', () => loadLesson(index));
-            lessonList.appendChild(li);
+        
+        let globalIndex = 0;
+        
+        modules.forEach(module => {
+            // Create Module Header
+            const moduleHeader = document.createElement('h4');
+            moduleHeader.className = 'module-header';
+            moduleHeader.textContent = module.title;
+            lessonList.appendChild(moduleHeader);
+
+            // Create Lesson List for this module
+            const ul = document.createElement('ul');
+            ul.className = 'module-lessons';
+            
+            module.lessons.forEach(lesson => {
+                const li = document.createElement('li');
+                li.textContent = lesson.title;
+                li.dataset.index = globalIndex; // Store global index
+                
+                // Closure to capture current globalIndex
+                const indexToLoad = globalIndex;
+                li.addEventListener('click', () => loadLesson(indexToLoad));
+                
+                ul.appendChild(li);
+                globalIndex++;
+            });
+            
+            lessonList.appendChild(ul);
         });
     }
 
     function loadLesson(index) {
-        const lesson = lessons[index];
+        if (index < 0 || index >= allLessons.length) return;
         
-        // Update UI logic
-        document.querySelectorAll('#lessonList li').forEach(li => li.classList.remove('active'));
-        lessonList.children[index].classList.add('active');
+        currentLessonIndex = index;
+        const lesson = allLessons[index];
+        
+        // Update Sidebar Active State
+        document.querySelectorAll('.module-lessons li').forEach(li => {
+            li.classList.remove('active');
+            if (parseInt(li.dataset.index) === index) {
+                li.classList.add('active');
+            }
+        });
 
-        lessonContent.innerHTML = lesson.description;
+        // Update Content
+        renderLessonContent(lesson);
         editor.setValue(lesson.starterCode);
+        
+        // Reset Output
         outputElement.textContent = 'Ready to run...';
         outputElement.className = '';
+    }
+    
+    function renderLessonContent(lesson) {
+        const navButtons = `
+            <div class="lesson-nav">
+                <button id="prevBtn" ${currentLessonIndex === 0 ? 'disabled' : ''}>&larr; Previous</button>
+                <button id="nextBtn" ${currentLessonIndex === allLessons.length - 1 ? 'disabled' : ''}>Next &rarr;</button>
+            </div>
+        `;
+        
+        lessonContent.innerHTML = lesson.description + navButtons;
+        
+        // Re-attach listeners to new buttons
+        document.getElementById('prevBtn')?.addEventListener('click', () => loadLesson(currentLessonIndex - 1));
+        document.getElementById('nextBtn')?.addEventListener('click', () => loadLesson(currentLessonIndex + 1));
     }
 
     // Run Code Logic
